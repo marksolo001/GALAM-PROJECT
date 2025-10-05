@@ -1,0 +1,28 @@
+; Inno Setup Script for GalamFarm
+
+[Setup]
+AppName=GalamFarm
+AppVersion=1.0
+DefaultDirName={pf}\GalamFarm
+DefaultGroupName=GalamFarm
+UninstallDisplayIcon={app}\GalamFarm.exe
+OutputBaseFilename=GalamFarm_Installer
+Compression=lzma
+SolidCompression=yes
+
+[Languages]
+Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
+
+[Tasks]
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
+
+[Files]
+; ⚡ Копируем всё содержимое из папки Game
+Source: "C:\Users\yelen\GalamFarm\Game\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+
+[Icons]
+Name: "{group}\GalamFarm"; Filename: "{app}\GalamFarm.exe"
+Name: "{commondesktop}\GalamFarm"; Filename: "{app}\GalamFarm.exe"; Tasks: desktopicon
+
+[Run]
+Filename: "{app}\GalamFarm.exe"; Description: "{cm:LaunchProgram,GalamFarm}"; Flags: nowait postinstall skipifsilent
